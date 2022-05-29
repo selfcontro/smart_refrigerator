@@ -1,29 +1,30 @@
 {
   "app": {
-    "bundleName": "com.example.refrigerator",
     "vendor": "example",
+    "bundleName": "com.example.smart_refri",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
     }
   },
-  "deviceConfig": {},
+  "deviceConfig": {
+    "default": {
+      "network": {
+        "cleartextTraffic": true
+      }
+    }
+  },
   "module": {
-    "package": "com.example.refrigerator",
-    "name": ".MyApplication",
-    "mainAbility": "com.example.refrigerator.MainAbility",
+    "mainAbility": ".MainAbility",
     "deviceType": [
       "phone",
-      "tablet",
-      "tv",
-      "wearable"
+      "tablet"
     ],
-    "distro": {
-      "deliveryWithInstall": true,
-      "moduleName": "entry",
-      "moduleType": "entry",
-      "installationFree": false
-    },
+    "reqPermissions": [
+      {
+        "name": "ohos.permission.INTERNET"
+      }
+    ],
     "abilities": [
       {
         "skills": [
@@ -36,27 +37,40 @@
             ]
           }
         ],
+        "orientation": "unspecified",
         "visible": true,
-        "name": "com.example.refrigerator.MainAbility",
+        "srcPath": "MainAbility",
+        "name": ".MainAbility",
+        "srcLanguage": "js",
         "icon": "$media:icon",
-        "description": "$string:mainability_description",
-        "label": "$string:entry_MainAbility",
+        "description": "$string:MainAbility_desc",
+        "formsEnabled": false,
+        "label": "$string:MainAbility_label",
         "type": "page",
         "launchType": "standard"
       }
     ],
+    "distro": {
+      "moduleType": "entry",
+      "installationFree": false,
+      "deliveryWithInstall": true,
+      "moduleName": "entry"
+    },
+    "package": "com.example.entry",
+    "srcPath": "",
+    "name": ".entry",
     "js": [
       {
         "pages": [
           "pages/index/index",
+          "pages/percent_bar/percent_bar",
           "pages/recipie_block/recipie_block",
-          "pages/storage_list/storage_list",
-          "pages/percent_bar/percent_bar"
+          "pages/storage_list/storage_list"
         ],
-        "name": "default",
+        "name": ".MainAbility",
         "window": {
           "designWidth": 720,
-          "autoDesignWidth": true
+          "autoDesignWidth": false
         }
       }
     ]
